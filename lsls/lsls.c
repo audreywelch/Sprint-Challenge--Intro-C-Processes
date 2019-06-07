@@ -17,6 +17,8 @@ int main(int argc, char **argv)
     printf("   %s\n", argv[i]);
   }
 
+  printf("file to be opened: %s\n",argv[1]);
+
   // // Create space for array storing commandline string
   // char commandline[2048];
 
