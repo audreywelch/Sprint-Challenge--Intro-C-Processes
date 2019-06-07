@@ -40,30 +40,16 @@ int main(int argc, char **argv)
   // Repeatly read and print entries
   while ((de = readdir(dr)) != NULL) {
 
-    
+    // Concatenate full file path
+    char *full_path[100];
+    stpcpy(stpcpy(stpcpy(full_path, argv[1]), "/"), de->d_name);
+    //printf("%s\n", full_path);
 
-    char *a = ("%s\n", argv[1]);
-    printf("a is %s\n", a);
-    char *b = ("/");
-    printf("b is %s\n", b);
-    // char *b = ("%s", de->d_name);
-    char *c = ("%s%s\n", a, b);
-    printf("%s\n", c);
-
-    char result[100] = "";
-    char result = snprintf(result, sizeof(result), "%s: %s: %s", argv[1], b, de->d_name);
-
-    printf("BLAH: %s\n", result);
-    char *full_path = ("%s: %s: %s\n", argv[1], b, de->d_name);
-    printf("full path for size: %s\n", full_path);
-
+    // Get file sizes using the full file path
     stat(full_path, &buf);
-    printf("file size is %lld\n", buf.st_size);
 
-    // print the name of the file within the directory entry
-    printf("%s\n", de->d_name);
-
-
+    // print the size & name of the file within the directory entry
+    printf("%lld - %s\n", buf.st_size, de->d_name);
   }
 
   // Close directory
@@ -71,15 +57,3 @@ int main(int argc, char **argv)
 
   return 0;
 }
-
-
-
-
-  // // Create space for array storing commandline string
-  // char commandline[2048];
-
-  // // Get input from the keyboard
-  // fgets(commandline, sizeof(commandline), stdin);
-
-  // // Print user input to check
-  // printf("User passed in: %s\n", commandline);
