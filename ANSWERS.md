@@ -6,7 +6,7 @@
 > BLOCKED: process waits in the main memory when it doesn't have access or something it needs, becoming ready after IO operations are completed.
 > SUSPENDED READY: process was in ready state, but was swapped out of main memory and placed into external storage by the scheduler. Transitions back to ready when the process is brought back into main memory.
 > SUSPENDED WAIT: process that was performing IO operation and lack of main memory causes the process to move to secondary memory. When work is complete, it can go to suspend ready.
-> COMPLETED: process is killed
+> COMPLETED: process is killed.
 
 **2. What is a zombie process?**
 
